@@ -19,4 +19,10 @@ class Country extends Model
         // This method accepts extra parameters so you can specitfy the exact location if needed.
         return $this->hasOne(Location::class);
     }
+
+    // Since this method fetches a one to Many relation, it needs to be in plural.
+    public function states()
+    {
+        return $this->hasMany(State::class);
+    }
 }

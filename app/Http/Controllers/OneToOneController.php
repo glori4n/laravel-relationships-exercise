@@ -25,12 +25,12 @@ class OneToOneController extends Controller
             ];
         }
 
-        return view('one-to-one-read', ['countries' => $countries]);
+        return view('one-to-one.read', ['countries' => $countries]);
     }
 
     public function add() 
     {
-        return view('one-to-one-add');
+        return view('one-to-one.add');
     }
 
     public function create(Request $request) {

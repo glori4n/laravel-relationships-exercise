@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.main')
 @section('content')
     <title>One to One</title>
     <div class="mt-5" style="text-align: center">
@@ -16,7 +16,7 @@
                 {{ Session::forget('message') }}
             </div>
         @endif
-        <a href="{{ route('one-to-one-read') }}"><small>See Entries</small></a>
+        <a href="{{ route('one-to-one-read') }}"><small>See One to One entries</small></a>
         <h2 class="mt-4">Add Country</h2>
         <form  action="{{ route('one-to-one-create') }}" method="POST" style="display:inline-block">
         @csrf

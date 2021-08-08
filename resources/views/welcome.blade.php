@@ -24,11 +24,12 @@
         <h1 style="text-align:center">Relationships Exercise.</h1>
         <hr>
         <div style="text-align:center">
-            <a href="{{ route('one-to-one-read') }}"><h2>One to One</h2></a>
+            <a href="{{ route('one-to-one-read') }}"><h2>One to One (hasOne & belongsTo)</h2></a>
             <hr>
-            <a href=""><h2>One to One Inverse</h2></a>
+            <a href="{{ route('one-to-many-read') }}"><h2>One to Many</h2></a>
+            <hr>
         </div>
-        
+
         <!-- Footer -->
         <footer style="text-align:center" class="mt-5">This snippet was made by © Glori4n (<a href="https://glori4n.net" target="new">https://glori4n.net</a>)</footer>
     </body>

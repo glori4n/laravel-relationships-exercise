@@ -1,8 +1,8 @@
-@extends('layout')
+@extends('layouts.main')
 @section('content')
     <title>One to One</title>
     <div class="mt-5" style="text-align: center">
-        <a href="{{ route('one-to-one-add') }}"><small>Add new entry</small></a>
+        <a href="{{ route('one-to-many-add') }}"><small>Add new One to One entry</small></a>
         @if ($countries)
         <table id="myTable" class="mt-4 container table table-striped table-bordered table-sm" max-width="100%">
             <thead>
