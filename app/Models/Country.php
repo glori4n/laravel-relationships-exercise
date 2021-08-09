@@ -25,4 +25,10 @@ class Country extends Model
     {
         return $this->hasMany(State::class);
     }
+
+    // This relation is defined by setting the first model and then the second one which is through.
+    public function cities()
+    {
+        return $this->hasManyThrough(City::class, State::class);
+    }
 }

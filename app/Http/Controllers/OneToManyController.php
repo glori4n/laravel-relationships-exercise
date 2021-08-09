@@ -8,10 +8,18 @@ use App\Models\State;
 
 class OneToManyController extends Controller
 {
-    public function read()
+    public function read(Request $request)
     {
+        if ($request->search_state) {
+            $country_state = State::find($request->search_state)->country->name;
+        } else {
+            $country_state = null;
+        }
+
         $countries = Country::with('states')->get();
-        return view('one-to-many.read')->with('countries', $countries);
+        $states = State::with('country')->get();
+        return view('one-to-many.read', ['countries' => $countries, 'states' => $states, 'country_state' => $country_state]);
+        
     }
 
     public function add() 
@@ -20,15 +28,15 @@ class OneToManyController extends Controller
         return view('one-to-many.add')->with('countries', $countries);
     }
 
-    public function create(Request $request) {
-
+    public function create(Request $request) 
+    {
+        
         $dataForm = [
-            'country_id' => $request->country_id,
             'name' => $request->state_name,
             'initials' => $request->state_initials
         ];
 
-        State::create($dataForm);
+        Country::find($request->country_id)->states()->create($dataForm);
 
         $message = 'The state '.$request->state_name.' was added to the database successfully.';
         session(['message' => $message]);

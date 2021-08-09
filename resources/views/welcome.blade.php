@@ -28,6 +28,8 @@
             <hr>
             <a href="{{ route('one-to-many-read') }}"><h2>One to Many</h2></a>
             <hr>
+            <a href="{{ route('has-many-through-read') }}"><h2>Has many through</h2></a>
+            <hr>
         </div>
 
         <!-- Footer -->
