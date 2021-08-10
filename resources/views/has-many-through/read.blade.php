@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th class="th-sm">Country Name</th>
-                    <th class="th-sm">City</th>
+                    <th class="th-sm">City (hasManyThrough State::class)</th>
                 </tr>
             </thead>
             <tbody>

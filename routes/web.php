@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OneToOneController;
 use App\Http\Controllers\OneToManyController;
 use App\Http\Controllers\HasManyThroughController;
+use App\Http\Controllers\ManyToManyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::get('/has-many-through-add', [HasManyThroughController::class, 'add'])->n
 Route::post('/has-many-through-create', [HasManyThroughController::class, 'create'])->name('has-many-through-create');
 Route::get('/has-many-through-read', [HasManyThroughController::class, 'read'])->name('has-many-through-read');
 
+// Many to Many
+Route::get('/many-to-many-add', [ManyToManyController::class, 'add'])->name('many-to-many-add');
+Route::post('/many-to-many-create', [ManyToManyController::class, 'create'])->name('many-to-many-create');
+Route::get('/many-to-many-read', [ManyToManyController::class, 'read'])->name('many-to-many-read');
 
 Route::get('/', function () {   
     return view('welcome');

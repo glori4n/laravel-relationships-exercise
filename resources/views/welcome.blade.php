@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Relationships exercises</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,11 +24,13 @@
         <h1 style="text-align:center">Relationships Exercise.</h1>
         <hr>
         <div style="text-align:center">
-            <a href="{{ route('one-to-one-read') }}"><h2>One to One (hasOne & belongsTo)</h2></a>
+            <a href="{{ route('one-to-one-read') }}"><h2>One to One</h2></a>
             <hr>
             <a href="{{ route('one-to-many-read') }}"><h2>One to Many</h2></a>
             <hr>
             <a href="{{ route('has-many-through-read') }}"><h2>Has many through</h2></a>
+            <hr>
+            <a href="{{ route('many-to-many-read') }}"><h2>Many to Many</h2></a>
             <hr>
         </div>
 

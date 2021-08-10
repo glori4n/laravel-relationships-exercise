@@ -12,4 +12,10 @@ class City extends Model
     protected $fillable =[
         'name'
     ];
+
+    // This method will return all the companies belonging to a City.
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }

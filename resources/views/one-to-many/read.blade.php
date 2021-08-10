@@ -7,7 +7,7 @@
             <thead>
                 <tr>
                     <th class="th-sm">Country Name</th>
-                    <th class="th-sm">States</th>
+                    <th class="th-sm">States (hasMany)</th>
                     <th class="th-sm">Initials</th>
                 </tr>
             </thead>
