@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/glori4n/gloriweb-laravel/blob/master/public/images/glogo.png"></>
+<p align="center"><img src="https://github.com/glori4n/laravel-relationships-exercise/blob/master/public/images/glogo.png"></>
 
 # laravel-relationships-exercise
 
