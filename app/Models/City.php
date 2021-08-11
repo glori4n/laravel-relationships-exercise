@@ -10,7 +10,8 @@ class City extends Model
     use HasFactory;
 
     protected $fillable =[
-        'name'
+        'name',
+        'state_id'
     ];
 
     // This method will return all the companies belonging to a City.

@@ -25,10 +25,11 @@ class HasManyThroughController extends Controller
     public function create(Request $request)
     {
         $dataForm = [
-            'name' => $request->city_name
+            'name' => $request->city_name,
+            'state_id' => $request->state_id
         ];
 
-        State::find($request->state_id)->cities()->create($dataForm);
+        Country::find(State::find($request->state_id)->country_id)->cities()->create($dataForm);
 
         $message = 'The city '.$request->state_name.' was added to the database successfully.';
         session(['message' => $message]);
