@@ -31,4 +31,10 @@ class Country extends Model
     {
         return $this->hasManyThrough(City::class, State::class);
     }
+
+    // This function will handle the Polymorphism.
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

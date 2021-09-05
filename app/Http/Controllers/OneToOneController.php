@@ -11,17 +11,17 @@ class OneToOneController extends Controller
     public function read() 
     {
         // As the hasOne relation can only be dealt with singularily (first() or find()) the solution was to pluck the country IDs then build an array off of that.
-        $countries_id = Country::get()->pluck('id');
-
-        foreach ($countries_id as $country_id) {
+        $countries_obj = Country::with('location')->get();
+        
+        foreach ($countries_obj as $country) {
             $countries[] = 
             [
                 // Uses the belongsTo relationship.
-                'name' => Location::find($country_id)->country->name,
+                'name' => $country->name,
                 
                 // Uses the hasOne relationship. 
-                'latitude' => Country::find($country_id)->location->latitude,
-                'longitude' => Country::find($country_id)->location->longitude
+                'latitude' => $country->location->latitude,
+                'longitude' => $country->location->longitude
             ];
         }
 

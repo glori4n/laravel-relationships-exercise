@@ -5,6 +5,7 @@ use App\Http\Controllers\OneToOneController;
 use App\Http\Controllers\OneToManyController;
 use App\Http\Controllers\HasManyThroughController;
 use App\Http\Controllers\ManyToManyController;
+use App\Http\Controllers\PolymorphController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,26 +18,41 @@ use App\Http\Controllers\ManyToManyController;
 |
 */
 
-// One to One
-Route::get('/one-to-one-add', [OneToOneController::class, 'add'])->name('one-to-one-add');
-Route::post('/one-to-one-create', [OneToOneController::class, 'create'])->name('one-to-one-create');
-Route::get('/one-to-one-read', [OneToOneController::class, 'read'])->name('one-to-one-read');
+// One to One | Route grouping exemplified.
+Route::group(['prefix' => 'one-to-one'], function () {
+    Route::get('/add', [OneToOneController::class, 'add'])->name('one-to-one-add');
+    Route::post('/create', [OneToOneController::class, 'create'])->name('one-to-one-create');
+    Route::get('/read', [OneToOneController::class, 'read'])->name('one-to-one-read');
+});
 
-// One to Many
-Route::get('/one-to-many-add', [OneToManyController::class, 'add'])->name('one-to-many-add');
-Route::post('/one-to-many-create', [OneToManyController::class, 'create'])->name('one-to-many-create');
-Route::get('/one-to-many-read', [OneToManyController::class, 'read'])->name('one-to-many-read');
-Route::post('/one-to-many-read-post', [OneToManyController::class, 'read'])->name('one-to-many-read-post');
+// One to Many | Route grouping exemplified on another way.
+Route::prefix('one-to-many')->group(function () {
+    Route::get('/add', [OneToManyController::class, 'add'])->name('one-to-many-add');
+    Route::post('/create', [OneToManyController::class, 'create'])->name('one-to-many-create');
+    Route::get('/read', [OneToManyController::class, 'read'])->name('one-to-many-read');
+    Route::post('/post', [OneToManyController::class, 'read'])->name('one-to-many-read-post');
+});
 
 // has Many through
-Route::get('/has-many-through-add', [HasManyThroughController::class, 'add'])->name('has-many-through-add');
-Route::post('/has-many-through-create', [HasManyThroughController::class, 'create'])->name('has-many-through-create');
-Route::get('/has-many-through-read', [HasManyThroughController::class, 'read'])->name('has-many-through-read');
+Route::prefix('has-many-through')->group(function () {
+    Route::get('/add', [HasManyThroughController::class, 'add'])->name('has-many-through-add');
+    Route::post('/create', [HasManyThroughController::class, 'create'])->name('has-many-through-create');
+    Route::get('/read', [HasManyThroughController::class, 'read'])->name('has-many-through-read');
+});
 
 // Many to Many
-Route::get('/many-to-many-add', [ManyToManyController::class, 'add'])->name('many-to-many-add');
-Route::post('/many-to-many-create', [ManyToManyController::class, 'create'])->name('many-to-many-create');
-Route::get('/many-to-many-read', [ManyToManyController::class, 'read'])->name('many-to-many-read');
+Route::prefix('many-to-many')->group(function () {
+    Route::get('/add', [ManyToManyController::class, 'add'])->name('many-to-many-add');
+    Route::post('/create', [ManyToManyController::class, 'create'])->name('many-to-many-create');
+    Route::get('/read', [ManyToManyController::class, 'read'])->name('many-to-many-read');
+});
+
+// Polymorph Controller
+Route::prefix('polymorph')->group(function () {
+    Route::get('/add', [PolymorphController::class, 'add'])->name('polymorph-add');
+    Route::post('/create', [PolymorphController::class, 'create'])->name('polymorph-create');
+    Route::get('/read', [PolymorphController::class, 'read'])->name('polymorph-read');
+});
 
 Route::get('/', function () {   
     return view('welcome');

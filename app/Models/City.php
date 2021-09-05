@@ -19,4 +19,10 @@ class City extends Model
     {
         return $this->belongsToMany(Company::class);
     }
+
+    // This function will handle the Polymorphism.
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

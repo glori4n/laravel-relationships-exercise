@@ -32,6 +32,8 @@
             <hr>
             <a href="{{ route('many-to-many-read') }}"><h2>Many to Many</h2></a>
             <hr>
+            <a href="{{ route('polymorph-read') }}"><h2>Polymorphic Relationships</h2></a>
+            <hr>
         </div>
 
         <!-- Footer -->

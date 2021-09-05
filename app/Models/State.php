@@ -24,4 +24,10 @@ class State extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    // This function will handle the Polymorphism.
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
