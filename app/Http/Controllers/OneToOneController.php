@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Country;
-use App\Models\Location;
 
 class OneToOneController extends Controller
 {
     public function read() 
     {
-        // As the hasOne relation can only be dealt with singularily (first() or find()) the solution was to pluck the country IDs then build an array off of that.
+        // The with method will bring the location relation.
         $countries_obj = Country::with('location')->get();
         
         foreach ($countries_obj as $country) {
@@ -18,7 +17,7 @@ class OneToOneController extends Controller
             [
                 // Uses the belongsTo relationship.
                 'name' => $country->name,
-                
+
                 // Uses the hasOne relationship. 
                 'latitude' => $country->location->latitude,
                 'longitude' => $country->location->longitude
@@ -42,6 +41,8 @@ class OneToOneController extends Controller
         ];
 
         $created_country = Country::create($dataForm);
+
+        // location() is the method with the hasOne relation. 
         $created_country->location()->create($dataForm);
 
         $message = 'The country '.$request->country_name.' was added to the database successfully.';

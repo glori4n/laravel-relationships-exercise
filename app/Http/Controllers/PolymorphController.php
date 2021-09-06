@@ -18,6 +18,7 @@ class PolymorphController extends Controller
 
     public function add()
     {
+        //  The with() method will instantiante Country with the relationships.
         $countries = Country::with('cities', 'states')->get();
         $cities = City::get();
         $states = State::get();
